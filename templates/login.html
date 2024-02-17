@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <body style="background-color:rgb(186, 193, 236);"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -13,7 +14,7 @@
     
     .icon-bar a {
       float: left;
-      width: 20%;
+      width: 16%;
       text-align: center;
       padding: 12px 0;
       transition: all 0.3s ease;
@@ -28,26 +29,45 @@
     .active {
       background-color: #b02ebc;
     }
+    form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .button {
+      background-color: #2f2e2e;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 13px;
+      margin: 1px 1px;
+      cursor: pointer;
+    }
 </style>
 <body>
 
 <div class="icon-bar">
-  <a class="active" href="#"><i class="fa fa-user"></i></a> 
-  <a href="#"><i class="fa fa-search"></i></a> 
+  <a class="active" href="login.html"><i class="fa fa-user"></i></a> 
+  <a href="sign.html"><i class="fa fa-sign-in"></i></a>
+  <a href="#"><i class="fa fa-search"></i></a>  
   <a href="#"><i class="fa fa-plus-square-o"></i></a> 
   <a href="#"><i class="fa fa-globe"></i></a>
   <a href="#"><i class="fa fa-reorder"></i></a> 
 </div>
+<center><h1>Login</h1></center> 
 <form method="POST" action="">
-  Username<input type="text" name="username" />
+  <h2 style="font-size:1.5vw">Username</h2><input type="text" name="username" />
   <br>
-  Name<input type="text" name="name" />
   <br>
-  Email<input type="text" name="email" />
+  <h1 style="font-size:1.5vw" >Password</h1><input type="text" name="password"/>
   <br>
-  Password<input type="text" name="password"/>
   <br>
-  <input type="submit">
+  <center><button class="button">Login</button></center>
+  
 </form>
 
 </body>
