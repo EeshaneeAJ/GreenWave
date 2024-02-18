@@ -4,7 +4,7 @@ import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='952003'
+app.config['MYSQL_PASSWORD']='My_Sql101'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
 @app.route('/',methods=['GET','POST'])
@@ -41,10 +41,13 @@ def events():
     events = cursor.fetchall()
     cursor.close()
     return render_template('events.html', events=events)
-
 @app.route('/redirect_to_post')
 def redirect_to_post():
     return redirect(url_for('post'))
+
+def events():
+    conn = mysql.connection
+    cursor = conn.cursor()
 @app.route('/post',methods=['GET','POST'])
 def post():
     if request.method== 'POST':
@@ -58,7 +61,7 @@ def post():
     return render_template('post.html')
 @app.route('/likes',methods=['GET','POST'])
 def likes():
-    conn = MySQLdb.connect(host='localhost', user='root', password='952003', database='green_wave')
+    conn = MySQLdb.connect(host='localhost', user='root', password='My_Sql101', database='green_wave')
     cur = conn.cursor()
     cur.execute("SELECT post FROM post_message")
     posts = cur.fetchall()

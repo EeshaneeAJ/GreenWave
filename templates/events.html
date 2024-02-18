@@ -1,87 +1,113 @@
 <!DOCTYPE html>
 <html>
-  <body style="background-color:rgb(186, 193, 236);"> 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    body {margin:0;}
-    
-    .icon-bar {
-      width: 100%;
-      background-color: #5b5959;
-      overflow: auto;
-    }
-    
-    .icon-bar a {
-      float: left;
-      width: 16%;
-      text-align: center;
-      padding: 12px 0;
-      transition: all 0.3s ease;
-      color: white;
-      font-size: 36px;
-    }
-    
-    .icon-bar a:hover {
-      background-color: #484848;
-    }
-    
-    .active {
-      background-color: #b02ebc;
-    }
-    form {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .button {
-      background-color: #2f2e2e;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 13px;
-      margin: 1px 1px;
-      cursor: pointer;
-    }
-</style>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            background-color: rgb(186, 193, 236);
+        }
+
+        .icon-bar {
+            width: 100%;
+            background-color: #5b5959;
+            overflow: auto;
+        }
+
+        .icon-bar a {
+            float: left;
+            width: 16%;
+            text-align: center;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 36px;
+        }
+
+        .icon-bar a:hover {
+            background-color: #484848;
+        }
+
+        .active {
+            background-color: #b02ebc;
+        }
+
+        form {
+    position: absolute;
+    bottom: 90px; /* Adjust this value to move the form down or up */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+        .button {
+            background-color: #2f2e2e;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            margin: 1px 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
 <body>
 
-<div class="icon-bar">
-  <a href="/"><i class="fa fa-sign-in"></i></a>
-  <a href="login"><i class="fa fa-user"></i></a> 
-  <a class="active" href="events"><i class="fa fa-search"></i></a>  
-  <a href="post"><i class="fa fa-plus-square-o"></i></a> 
-  <a href="likes"><i class="fa fa-thumbs-o-up"></i></a>
-  <a href="#"><i class="fa fa-globe"></i></a> 
-</div>
-<center><h1>Events</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Event ID</th>
-            <th>Event Name</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Location</th>
-            <th>Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for event in events %}
-        <tr>
-            <td>{{ event[0] }}</td>
-            <td>{{ event[1] }}</td>
-            <td>{{ event[2] }}</td>
-            <td>{{ event[3] }}</td>
-            <td>{{ event[4] }}</td>
-            <td>{{ event[5] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table></center>
+    <div class="icon-bar">
+        <a href="/"><i class="fa fa-sign-in"></i></a>
+        <a href="login"><i class="fa fa-user"></i></a>
+        <a class="active" href="events"><i class="fa fa-search"></i></a>
+        <a href="post"><i class="fa fa-plus-square-o"></i></a>
+        <a href="likes"><i class="fa fa-thumbs-o-up"></i></a>
+        <a href="#"><i class="fa fa-globe"></i></a>
+    </div>
+    <center>
+        <h1>Events</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event ID</th>
+                    <th>Event Name</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <td>{{ event[0] }}</td>
+                    <td>{{ event[1] }}</td>
+                    <td>{{ event[2] }}</td>
+                    <td>{{ event[3] }}</td>
+                    <td>{{ event[4] }}</td>
+                    <td>{{ event[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </center>
+    <br><br>
+    <center><h2>Register for Events</h2></center>
+    <form action="/register" method="post">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="event_name">Event Name:</label><br>
+        <input type="text" id="event_name" name="event_name"><br>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address"><br><br>
+        <input type="submit" value="Register">
+    </form>
+
 </body>
+
 </html>
