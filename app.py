@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,redirect,url_for
 from flask_mysqldb import MySQL
+import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
@@ -30,7 +31,28 @@ def login():
         cur.execute("INSERT INTO login(username,password)VALUES(%s,%s)",(username,password))
         mysql.connection.commit()
         cur.close()
+        return redirect(url_for('post'))
     return render_template('login.html')
+@app.route('/post',methods=['GET','POST'])
+def post():
+    if request.method== 'POST':
+        userDetails=request.form
+        post=userDetails['post']
+        cur=mysql.connection.cursor()
+        cur.execute("INSERT INTO post_message(post)VALUES(%s)",(post,))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('likes'))
+    return render_template('post.html')
+@app.route('/likes',methods=['GET','POST'])
+def likes():
+    conn = MySQLdb.connect(host='localhost', user='root', password='952003', database='green_wave')
+    cur = conn.cursor()
+    cur.execute("SELECT post FROM post_message")
+    posts = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('likes.html', posts=posts)
 if __name__ == '__main__':
     app.run(debug=True)
     

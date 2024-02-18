@@ -52,23 +52,17 @@
 
 <div class="icon-bar">
   <a href="#"><i class="fa fa-sign-in"></i></a>
-  <a class="active" href="#"><i class="fa fa-user"></i></a> 
+  <a href="#"><i class="fa fa-user"></i></a> 
   <a href="#"><i class="fa fa-search"></i></a>  
   <a href="#"><i class="fa fa-plus-square-o"></i></a> 
-  <a href="#"><i class="fa fa-thumbs-o-up"></i></a>
+  <a class="active" href="#"><i class="fa fa-thumbs-o-up"></i></a>
   <a href="#"><i class="fa fa-globe"></i></a> 
 </div>
-<center><h1>Login</h1></center> 
-<form method="POST" action="/login">
-  <h2 style="font-size:1.5vw">Username</h2><input type="text" name="username" />
-  <br>
-  <br>
-  <h1 style="font-size:1.5vw" >Password</h1><input type="text" name="password"/>
-  <br>
-  <br>
-  <center><button class="button">Login</button></center>
-  
-</form>
-
+<center><h1>Post Messages</h1></center>
+<center><ul>
+    {% for post in posts %}
+    <li>{{ post[0] }}</li>
+    {% endfor %}
+</ul></center>
 </body>
 </html>
