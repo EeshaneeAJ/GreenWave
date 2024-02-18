@@ -52,23 +52,36 @@
 
 <div class="icon-bar">
   <a href="/"><i class="fa fa-sign-in"></i></a>
-  <a class="active" href="login"><i class="fa fa-user"></i></a> 
-  <a href="events"><i class="fa fa-search"></i></a>  
+  <a href="login"><i class="fa fa-user"></i></a> 
+  <a class="active" href="events"><i class="fa fa-search"></i></a>  
   <a href="post"><i class="fa fa-plus-square-o"></i></a> 
   <a href="likes"><i class="fa fa-thumbs-o-up"></i></a>
   <a href="#"><i class="fa fa-globe"></i></a> 
 </div>
-<center><h1>Login</h1></center> 
-<form method="POST" action="/login">
-  <h2 style="font-size:1.5vw">Username</h2><input type="text" name="username" />
-  <br>
-  <br>
-  <h1 style="font-size:1.5vw" >Password</h1><input type="text" name="password"/>
-  <br>
-  <br>
-  <center><button class="button">Login</button></center>
-  
-</form>
-
+<center><h1>Events</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Event ID</th>
+            <th>Event Name</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Location</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event[0] }}</td>
+            <td>{{ event[1] }}</td>
+            <td>{{ event[2] }}</td>
+            <td>{{ event[3] }}</td>
+            <td>{{ event[4] }}</td>
+            <td>{{ event[5] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table></center>
 </body>
 </html>

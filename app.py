@@ -31,8 +31,20 @@ def login():
         cur.execute("INSERT INTO login(username,password)VALUES(%s,%s)",(username,password))
         mysql.connection.commit()
         cur.close()
-        return redirect(url_for('post'))
+        return redirect(url_for('events'))
     return render_template('login.html')
+@app.route('/events')
+def events():
+    conn = mysql.connection
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM events")
+    events = cursor.fetchall()
+    cursor.close()
+    return render_template('events.html', events=events)
+
+@app.route('/redirect_to_post')
+def redirect_to_post():
+    return redirect(url_for('post'))
 @app.route('/post',methods=['GET','POST'])
 def post():
     if request.method== 'POST':
