@@ -1,10 +1,10 @@
-from flask import Flask,render_template,request,redirect,url_for
+from flask import Flask,render_template,request,redirect,url_for,flash
 from flask_mysqldb import MySQL
 import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='952003'
+app.config['MYSQL_PASSWORD']='My_Sql101'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
 @app.route('/',methods=['GET','POST'])
@@ -88,13 +88,29 @@ def footprint1():
    return render_template('footprint1.html')
 @app.route('/footprint2', methods=['GET', 'POST'])
 def footprint2():
-    if request.method=='POST':
-        country=request.form['country']
+    if request.method == 'POST':
+        country = request.form['country']
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM footprint WHERE country = %s", (country,))
         data = cur.fetchone()
         cur.close()
-        return render_template('footprint2.html', data=data)
+        if data:
+            # Fetch column names separately
+            cur = mysql.connection.cursor()
+            cur.execute("SHOW COLUMNS FROM footprint")
+            column_names = [column[0] for column in cur.fetchall()]
+            cur.close()
+
+            # Create a dictionary with column names as keys and data values as values
+            data_dict = dict(zip(column_names, data))
+
+            return render_template('footprint2.html', data=data_dict)
+        else:
+            flash(f"No data found for the country: {country}")
+            return redirect(url_for('footprint1'))
+    return render_template('footprint2.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
     
