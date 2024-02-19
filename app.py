@@ -4,9 +4,12 @@ import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='952003'
+app.config['MYSQL_PASSWORD']='My_Sql101'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
+@app.route('/home')
+def home():
+    return render_template('home.html')
 @app.route('/',methods=['GET','POST'])
 def sign():
     if request.method== 'POST':
@@ -66,6 +69,14 @@ def post():
         return redirect(url_for('likes'))
     return render_template('post.html')
 @app.route('/likes',methods=['GET','POST'])
+def likes():
+    conn = MySQLdb.connect(host='localhost', user='root', password='My_Sql101', database='green_wave')
+    cur = conn.cursor()
+    cur.execute("SELECT post FROM post_message")
+    posts = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('likes.html', posts=posts)
 def comments():
     if request.method=='POST':
         comments_details=request.form
@@ -82,7 +93,7 @@ def comments():
         cursor.execute("SELECT * FROM post_message")
         posts=cursor.fetchall()
         cursor.close()
-        return render_template('likes.html',posts=posts)
+        return render_template('likes.html',posts=posts) 
 @app.route('/footprint1')
 def footprint1():
    return render_template('footprint1.html')

@@ -7,7 +7,11 @@
     <style>
         body {
             margin: 0;
-            background-color: rgb(186, 193, 236);
+            background-image: url('https://i.pinimg.com/564x/02/31/2a/02312ad13662a75771b7d3d840687c3b.jpg'); /* Specify the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif; /* Adding a font-family for better readability */
+            color:rgb(11, 1, 1);
         }
 
         .icon-bar {
@@ -17,13 +21,13 @@
         }
 
         .icon-bar a {
-            float: left;
-            width: 16%;
+            display: inline-block;
+            width: 14%;
             text-align: center;
             padding: 12px 0;
             transition: all 0.3s ease;
             color: white;
-            font-size: 36px;
+            font-size: 35px; /* Adjust font size */
         }
 
         .icon-bar a:hover {
@@ -31,16 +35,32 @@
         }
 
         .active {
-            background-color: #b02ebc;
+            background-color: #05825e;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto; /* Center the table horizontally */
+            border-collapse: collapse; /* Collapse table borders */
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #020202; /* Add border to cells */
+        }
+
+        th {
+            background-color: #481308;
+            color: white;
         }
 
         form {
-    position: absolute;
-    bottom: 90px; /* Adjust this value to move the form down or up */
-    left: 50%;
-    transform: translateX(-50%);
-}
-
+            position: absolute;
+            bottom: 20px; /* Adjust this value to move the form down or up */
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
         .button {
             background-color: #2f2e2e;
@@ -60,6 +80,7 @@
 <body>
 
     <div class="icon-bar">
+        <a href="/home"><i class="fa fa-home"></i></a>
         <a href="/"><i class="fa fa-sign-in"></i></a>
         <a href="login"><i class="fa fa-user"></i></a>
         <a class="active" href="events"><i class="fa fa-search"></i></a>
@@ -67,35 +88,38 @@
         <a href="likes"><i class="fa fa-comment"></i></a>
         <a href="footprint1"><i class="fa fa-globe"></i></a>
     </div>
+
     <center>
         <h1>Events</h1>
         <table>
-            <thead>
-                <tr>
-                    <th>Event ID</th>
-                    <th>Event Name</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Location</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for event in events %}
-                <tr>
-                    <td>{{ event[0] }}</td>
-                    <td>{{ event[1] }}</td>
-                    <td>{{ event[2] }}</td>
-                    <td>{{ event[3] }}</td>
-                    <td>{{ event[4] }}</td>
-                    <td>{{ event[5] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+          <thead>
+            <tr>
+                <th>Event ID</th>
+                <th>Event Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event[0] }}</td>
+                <td>{{ event[1] }}</td>
+                <td>{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>{{ event[4] }}</td>
+                <td>{{ event[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody> 
         </table>
     </center>
     <br><br>
-    <center><h2>Register for Events</h2></center>
+    <center>
+        <h2>Register for Events</h2>
+    </center>
     <form action="/events" method="post">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username"><br>
@@ -105,7 +129,7 @@
         <input type="text" id="name" name="name"><br>
         <label for="address">Address:</label><br>
         <input type="text" id="address" name="address"><br><br>
-        <input type="submit" value="Register">
+        <input type="submit" value="Register" class="button">
     </form>
 
 </body>

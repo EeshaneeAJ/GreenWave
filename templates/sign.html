@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <body style="background-color:rgb(186, 193, 236);"> 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    body {margin:0;}
-    
-    .icon-bar {
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            background-image: url('https://wallpaper.dog/large/20474624.jpg'); /* Specify the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif; /* Adding a font-family for better readability */
+        }
+
+        .icon-bar {
       width: 100%;
       background-color: #5b5959;
       overflow: auto;
+      margin-bottom: 20px; /* Move the icon bar down */
     }
     
     .icon-bar a {
-      float: left;
-      width: 16%;
-      text-align: center;
-      padding: 12px 0;
-      transition: all 0.3s ease;
-      color: white;
-      font-size: 36px;
-    }
-    
-    .icon-bar a:hover {
-      background-color: #484848;
-    }
-    
+        display: inline-block;
+        width: 14%;
+        text-align: center;
+        padding: 12px 0;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 35px; /* Adjust font size */
+      }
     .active {
-      background-color: #b02ebc;
-    }
-    form {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .button {
-      background-color: #2f2e2e;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 13px;
-      margin: 1px 1px;
-      cursor: pointer;
-    }
-</style>
+        background-color: #05825e;
+      }
+       
+
+        form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .button {
+            background-color: #2f2e2e;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+            margin: 1px 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 <body>
 
 <div class="icon-bar">
+  <a href="/home"><i class="fa fa-home"></i></a>
   <a class="active" href="/"><i class="fa fa-sign-in"></i></a>
   <a href="login"><i class="fa fa-user"></i></a> 
   <a href="events"><i class="fa fa-search"></i></a> 
