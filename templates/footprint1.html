@@ -49,23 +49,19 @@
     }
 </style>
 <body>
-
-<div class="icon-bar">
-  <a href="/"><i class="fa fa-sign-in"></i></a>
-  <a href="login"><i class="fa fa-user"></i></a> 
-  <a href="events"><i class="fa fa-search"></i></a>  
-  <a class="active" href="post"><i class="fa fa-plus-square-o"></i></a> 
-  <a href="likes"><i class="fa fa-comment"></i></a>
-  <a href="footprint1"><i class="fa fa-globe"></i></a> 
-</div>
-<center><h1>Posts</h1></center> 
-<form method="POST" action="/post">
-  <h1 style="font-size:1.5vw" >Post here</h1><input type="text" name="post"/>
-  <br>
-  <br>
-  <center><button class="button">Click here to post</button></center>
-  
-</form>
-
+  <div class="icon-bar">
+    <a href="/"><i class="fa fa-sign-in"></i></a>
+    <a href="login"><i class="fa fa-user"></i></a> 
+    <a href="events"><i class="fa fa-search"></i></a>  
+    <a href="post"><i class="fa fa-plus-square-o"></i></a> 
+    <a href="likes"><i class="fa fa-comment"></i></a>
+    <a  class="active" href="footprint1"><i class="fa fa-globe"></i></a> 
+  </div>
+  <h2>Enter Your Information:</h2>
+    <form method="POST" action="/footprint2">
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

@@ -75,6 +75,7 @@ def comments():
         cur.execute("INSERT INTO comments(post_id,comment)VALUES(%s,%s)",(post_id,comment))
         mysql.connection.commit()
         cur.close()
+        return redirect(url_for('footprint1'))
     if request.method=='GET':
         conn=mysql.connection
         cursor=conn.cursor()
@@ -82,7 +83,18 @@ def comments():
         posts=cursor.fetchall()
         cursor.close()
         return render_template('likes.html',posts=posts)
-
+@app.route('/footprint1')
+def footprint1():
+   return render_template('footprint1.html')
+@app.route('/footprint2', methods=['GET', 'POST'])
+def footprint2():
+    if request.method=='POST':
+        country=request.form['country']
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM footprint WHERE country = %s", (country,))
+        data = cur.fetchone()
+        cur.close()
+        return render_template('footprint2.html', data=data)
 if __name__ == '__main__':
     app.run(debug=True)
     
