@@ -4,7 +4,7 @@ import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='My_Sql101'
+app.config['MYSQL_PASSWORD']='952003'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
 @app.route('/home')
@@ -68,32 +68,27 @@ def post():
         cur.close()
         return redirect(url_for('likes'))
     return render_template('post.html')
-@app.route('/likes',methods=['GET','POST'])
+@app.route('/likes', methods=['GET', 'POST'])
 def likes():
-    conn = MySQLdb.connect(host='localhost', user='root', password='My_Sql101', database='green_wave')
-    cur = conn.cursor()
-    cur.execute("SELECT post FROM post_message")
-    posts = cur.fetchall()
-    cur.close()
-    conn.close()
-    return render_template('likes.html', posts=posts)
-def comments():
-    if request.method=='POST':
-        comments_details=request.form
-        post_id=comments_details['post_id']
-        comment=comments_details['comment']
-        cur=mysql.connection.cursor()
-        cur.execute("INSERT INTO comments(post_id,comment)VALUES(%s,%s)",(post_id,comment))
+    if request.method == 'POST':
+        # Process comment submission
+        comments_details = request.form
+        post_id = comments_details['post_id']
+        comment = comments_details['comment']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO comments(post_id, comment) VALUES (%s, %s)", (post_id, comment))
         mysql.connection.commit()
         cur.close()
-        return redirect(url_for('footprint1'))
-    if request.method=='GET':
-        conn=mysql.connection
-        cursor=conn.cursor()
+        return redirect(url_for('likes'))
+
+    elif request.method == 'GET':
+        conn = mysql.connection
+        cursor = conn.cursor()
         cursor.execute("SELECT * FROM post_message")
-        posts=cursor.fetchall()
+        posts = cursor.fetchall()
         cursor.close()
-        return render_template('likes.html',posts=posts) 
+        return render_template('likes.html', posts=posts)
+
 @app.route('/footprint1')
 def footprint1():
    return render_template('footprint1.html')
