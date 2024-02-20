@@ -4,7 +4,7 @@ import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='952003'
+app.config['MYSQL_PASSWORD']='My_Sql101'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
 @app.route('/home')
