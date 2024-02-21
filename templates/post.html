@@ -56,14 +56,26 @@
             cursor: pointer;
         }
         
-        /* Increase the size of the text box */
-        input[type="text"] {
+         /* Style for the username input */
+        input[type="text"].username {
+            width: 60%; /* Adjust the width as needed */
+            height: 10px; /* Adjust the height as needed */
+            padding: 10px; /* Add padding for better appearance */
+            font-size: 16px; /* Adjust font size */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            border: 1px solid #000000; /* Add border for better visibility */
+            margin-bottom: 20px; /* Add some space between input fields */
+        }
+
+        /* Style for the post input */
+        input[type="text"].post {
             width: 90%; /* Adjust the width as needed */
             height: 50px; /* Adjust the height as needed */
             padding: 50px; /* Add padding for better appearance */
             font-size: 16px; /* Adjust font size */
             border-radius: 5px; /* Add border radius for rounded corners */
-            border: 1px solid #ccc; /* Add border for better visibility */
+            border: 1px solid #0b0a0a; /* Add border for better visibility */
+            margin-bottom: 20px; /* Add some space between input fields */
         }
     </style>
 </head>
@@ -78,12 +90,17 @@
   <a href="likes"><i class="fa fa-comment"></i></a>
   <a href="footprint1"><i class="fa fa-globe"></i></a> 
 </div>
-<center><h1>Posts</h1></center> 
-<center><form method="POST" action="/post">
-  <h1 style="font-size:1.5vw" >Post here</h1><input type="text" name="post"/>
-  <br>
-  <br>
- <button class="button">Click here to post</button></center>
+<center><h1>POSTS</h1></center> 
+<form method="POST" action="/post">
+    <br>
+    <label for="username">Username:</label><br>
+    <input type="text" class="username" name="username" />
+    <br>
+    <label for="username">Post Here:</label><br>
+    <input type="text" class="post" name="post" />
+    <br>
+    <br>
+    <center><button class="button">Click here to Post</button></center>
 </form>
 
 </body>

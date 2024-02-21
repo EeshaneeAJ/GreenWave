@@ -4,7 +4,7 @@ import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='952003'
+app.config['MYSQL_PASSWORD']='My_Sql101'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
 @app.route('/')
@@ -61,9 +61,11 @@ def events():
 def post():
     if request.method== 'POST':
         userDetails=request.form
+        username=userDetails['username']
         post=userDetails['post']
+        
         cur=mysql.connection.cursor()
-        cur.execute("INSERT INTO post_message(post)VALUES(%s)",(post,))
+        cur.execute("INSERT INTO post_message(username,post)VALUES(%s,%s)",(username,post))
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('likes'))

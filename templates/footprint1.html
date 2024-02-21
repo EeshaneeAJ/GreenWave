@@ -1,59 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <body style="background-color:rgb(186, 193, 236);"> 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    body {
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
             margin: 0;
-            background-image: url('https://i.pinimg.com/564x/02/31/2a/02312ad13662a75771b7d3d840687c3b.jpg'); /* Specify the path to your background image */
+            background-image: url('https://i.pinimg.com/564x/02/31/2a/02312ad13662a75771b7d3d840687c3b.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            font-family: Arial, sans-serif; /* Adding a font-family for better readability */
+            font-family: Arial, sans-serif;
         }
-    
-    .icon-bar {
-      width: 100%;
-      background-color: #5b5959;
-      overflow: auto;
-    }
-    
-    .icon-bar a {
-        display: inline-block;
-        width: 14%;
-        text-align: center;
-        padding: 12px 0;
-        transition: all 0.3s ease;
-        color: white;
-        font-size: 35px; /* Adjust font size */
-      }
 
-    .icon-bar a:hover {
-      background-color: #484848;
-    }
-    
-    .active {
-      background-color: #680c07;
-    }
-    form {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .button {
-      background-color: #2f2e2e;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 13px;
-      margin: 1px 1px;
-      cursor: pointer;
-    }
-</style>
+        .icon-bar {
+            width: 100%;
+            background-color: #5b5959;
+            overflow: auto;
+        }
+
+        .icon-bar a {
+            display: inline-block;
+            width: 14%;
+            text-align: center;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 35px;
+        }
+
+        .icon-bar a:hover {
+            background-color: #484848;
+        }
+
+        .active {
+            background-color: #680c07;
+        }
+
+        form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* Adjust the width of the form */
+            padding: 20px; /* Add padding for better spacing */
+        }
+
+        label {
+            display: block; /* Make labels appear on a new line */
+            margin-bottom: 10px; /* Add some spacing below labels */
+        }
+
+        input[type="text"] {
+            width: 100%; /* Make the input field fill the entire width of the form */
+            padding: 10px; /* Add padding inside the input field */
+            margin-bottom: 10px; /* Add some spacing below the input field */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        button[type="submit"] {
+            width: 100%; /* Make the button fill the entire width of the form */
+            padding: 10px; /* Add padding inside the button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: #2f2e2e; /* Set background color */
+            border: none; /* Remove border */
+            color: white; /* Set text color */
+            font-size: 16px; /* Set font size */
+            transition: background-color 0.3s; /* Add transition for smoother hover effect */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #484848; /* Change background color on hover */
+        }
+    </style>
+</head>
 <body>
   <div class="icon-bar">
     <a href="/"><i class="fa fa-home"></i></a>
@@ -64,11 +83,14 @@
     <a href="likes"><i class="fa fa-comment"></i></a>
     <a  class="active" href="footprint1"><i class="fa fa-globe"></i></a> 
   </div>
- <center><h2>Enter the country to check the footprints:</h2></center>
-    <form method="POST" action="/footprint2">
-        <label for="country">Country:</label>
-        <input type="text" id="country" name="country">
-        <button type="submit">Submit</button>
-    </form>
+  <br>
+  <br>
+  <br>
+ <center><h1>Enter the country to check the footprints:</h1></center>
+    <center><form method="POST" action="/footprint2">
+        <label style="font-size:2vw" for="country">Country:</label>
+        <input type="text" id="country" name="country" style="width: 70%;"> <!-- Adjust the width here -->
+        <button type="submit" style="width: 30%;">Submit</button> <!-- Adjust the width here -->
+    </form></center>
 </body>
 </html>

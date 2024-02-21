@@ -38,10 +38,16 @@
             background-color: #680c07;
         }
 
-        table {
+        .container {
             margin-top: 50px;
-            border-collapse: collapse;
             width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 75%;
         }
 
         th, td {
@@ -53,6 +59,13 @@
         th {
             background-color: #5b5959;
             color: white;
+        }
+        .container {
+            width: 80%; /* Set the width of the container */
+            margin: 0 auto; /* Center the container horizontally */
+            padding: 20px; /* Add some padding to the container */
+            background-color: #f0f0f0; /* Set a background color for the container */
+            border: 1px solid #ccc; /* Add a border around the container */
         }
     </style>
 </head>
@@ -66,18 +79,20 @@
     <a href="likes"><i class="fa fa-comment"></i></a>
     <a class="active" href="footprint1"><i class="fa fa-globe"></i></a>
 </div>
-<center>
-  <h1>FOOTPRINT</h1>
-  <table>
-    <tbody>
-        {% for key, value in data.items() %}
-        <tr>
-            <td>{{ key }}</td>
-            <td>{{ value }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-</center>
+<div class="container">
+    <center>
+      <h1>FOOTPRINT</h1>
+      <table>
+        <tbody>
+            {% for key, value in data.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </center>
+</div>
 </body>
 </html>
