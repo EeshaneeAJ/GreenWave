@@ -4,13 +4,13 @@ import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='My_Sql101'
+app.config['MYSQL_PASSWORD']='952003'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
-@app.route('/home')
+@app.route('/')
 def home():
     return render_template('home.html')
-@app.route('/',methods=['GET','POST'])
+@app.route('/sign',methods=['GET','POST'])
 def sign():
     if request.method== 'POST':
         userDetails=request.form
