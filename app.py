@@ -4,7 +4,7 @@ import MySQLdb
 app= Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='My_Sql101'
+app.config['MYSQL_PASSWORD']='952003'
 app.config['MYSQL_DB']='green_wave'
 mysql=MySQL(app)
 @app.route('/')
@@ -22,19 +22,28 @@ def sign():
         cur.execute("INSERT INTO sign_up(username,name,email,password)VALUES(%s,%s,%s,%s)",(username,name,email,password))
         mysql.connection.commit()
         cur.close()
-        return redirect(url_for('login'))
+        return redirect(url_for('login', username=username, password=password))
     return render_template('sign.html')
-@app.route('/login',methods=['GET','POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method== 'POST':
-        userDetails=request.form
-        username=userDetails['username']
-        password=userDetails['password']
-        cur=mysql.connection.cursor()
-        cur.execute("INSERT INTO login(username,password)VALUES(%s,%s)",(username,password))
-        mysql.connection.commit()
+    if request.method == 'POST':
+        userDetails = request.form
+        username = userDetails['username']
+        password = userDetails['password']
+        
+        # Fetch password from sign_up table for the given username
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT password FROM sign_up WHERE username = %s", (username,))
+        stored_password = cur.fetchone()
         cur.close()
-        return redirect(url_for('events'))
+        
+        if stored_password and stored_password[0] == password:
+            # Passwords match, redirect to events page
+            return redirect(url_for('events'))
+        else:
+            flash('Invalid username or password')  # Flash error message
+            return redirect(url_for('login'))  # Redirect to login page
+    
     return render_template('login.html')
 @app.route('/events', methods=['GET', 'POST'])
 def events():
